@@ -1,7 +1,2 @@
-
 #!/bin/bash
 gcc -E $VFILE -O C 
-=======
-
-
->>>>>>> 2d8af9e (commit)
