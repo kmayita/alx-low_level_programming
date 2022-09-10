@@ -7,17 +7,19 @@
  * Return: 0
  */
 int main(void)
-{
-    int a, b;
+
+{   int a, b;
     for (a = 0; a < 10; a++)
-    {
-        for (b = 0; b < 10; b++)
-        {
-            printf("%d", a);
-            printf("%d", b);
-            putchar(',');
-        }
-    }
-    printf("\n");
-    return (0);
+{
+    for (b = 0; b < 10; b++)
+{
+         printf("%d", a);
+     
+       	  printf("%d", b);
+          putchar(',');
+  
+ }
+ }
+ printf("\n");
+ return (0);
 }
