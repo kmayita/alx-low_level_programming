@@ -1,21 +1,31 @@
 #include "main.h"
+#include "stdio.h"
 
 /**
- * print_chessboard - prints 2D array of chessboard
- * @a: chessboard array
- * Return: void
+ * print_diagsums- sum diagonal values
+ *
+ * @a: pointer to array
+ *
+ * @size: int
+ *
+ *Return: sum of two sides
+ *
  */
 
-void print_chessboard(char (*a)[8])
+void print_diagsums(int *a, int size)
 {
-	int row, col;
+	int counter1, counter2, sum1, sum2;
 
-	for (row = 0; row < 8; row++)
+	sum1 = 0;
+	sum2 = 0;
+
+	for (counter1 = 0; counter1 < size; counter1++)
 	{
-		for (col = 0; col < 8; col++)
-		{
-			_putchar(a[row][col]);
-		}
-		_putchar('\n');
+		sum1 += a[(size + 1) * counter1];
 	}
+	for (counter2 = 0; counter2 < size; counter2++)
+	{
+		sum2 += a[(size - 1) * (counter2 + 1)];
+	}
+	printf("%d, %d\n", sum1, sum2);
 }
