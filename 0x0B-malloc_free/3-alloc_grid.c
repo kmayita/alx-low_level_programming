@@ -1,55 +1,51 @@
 #include "main.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
- * str_concat - concatenates two strings.
+ * **alloc_grid - function to allocate memory to grid
  *
- * @s1: char pointer
+ * @width: int arg
  *
- * @s2: char pointer
+ * @height: int arg
  *
- *  Return: strTemp
+ * Return: grid of 0s
  */
 
-char *str_concat(char *s1, char *s2)
+int **alloc_grid(int width, int height)
 {
-	int counter1, counter2, i, j;
-	char *strTemp;
+	int col, row;
+	int **doublePtr;
 
-	counter1 = 0;
-	counter2 = 0;
-
-	if (s1 == NULL)
-	{
-		s1 = "";
-	}
-	if (s2 == NULL)
-	{
-		s2 = "";
-	}
-	while (s1[counter1] != '\0')
-	{
-		counter1++;
-	}
-	while (s2[counter2] != '\0')
-	{
-		counter2++;
-	}
-	counter2++;
-	strTemp = malloc(sizeof(char) * (counter1 + counter2));
-	if (strTemp == NULL)
+	if (width < 1 || height < 1)
 	{
 		return (NULL);
 	}
-	for (i = 0; i < counter1; i++)
+
+	doublePtr = malloc(height * sizeof(int *));
+
+	if (doublePtr == NULL)
 	{
-		strTemp[i] =  s1[i];
+		return (NULL);
 	}
 
-	for (j = 0; j < counter2; j++)
+	for (col = 0; col < height; col++)
 	{
-		strTemp[i + j] = s2[j];
+		doublePtr[col] = malloc(width * sizeof(int));
+
+		if (doublePtr[col] == NULL)
+		{
+			for (row = 0; row < col; row++)
+				free(doublePtr[row]);
+
+			free(doublePtr);
+			return (NULL);
+		}
+
+		for (row = 0; row < width; row++)
+		{
+			doublePtr[col][row] = 0;
+		}
 	}
-	return (strTemp);
+		return (doublePtr);
 }
