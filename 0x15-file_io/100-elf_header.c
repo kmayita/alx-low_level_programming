@@ -323,4 +323,3 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	close_file(head_file);
 	return (0);
 }
-
